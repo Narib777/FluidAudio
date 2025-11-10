@@ -1,4 +1,5 @@
 // swift-tools-version: 5.10
+// iOS-Only Variant - CLI removed for iOS compatibility
 import PackageDescription
 
 let package = Package(
@@ -11,10 +12,6 @@ let package = Package(
         .library(
             name: "FluidAudio",
             targets: ["FluidAudio"]
-        ),
-        .executable(
-            name: "fluidaudio",
-            targets: ["FluidAudioCLI"]
         ),
     ],
     dependencies: [],
@@ -36,15 +33,6 @@ let package = Package(
             name: "FastClusterWrapper",
             path: "Sources/FastClusterWrapper",
             publicHeadersPath: "include"
-        ),
-        .executableTarget(
-            name: "FluidAudioCLI",
-            dependencies: ["FluidAudio"],
-            path: "Sources/FluidAudioCLI",
-            exclude: ["README.md"],
-            resources: [
-                .process("Utils/english.json")
-            ]
         ),
         .testTarget(
             name: "FluidAudioTests",
